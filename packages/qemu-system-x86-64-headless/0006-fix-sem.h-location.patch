@@ -1,6 +1,6 @@
-diff -uNr qemu-4.2.0/linux-user/strace.c qemu-4.2.0.mod/linux-user/strace.c
---- qemu-4.2.0/linux-user/strace.c	2019-12-12 20:20:48.000000000 +0200
-+++ qemu-4.2.0.mod/linux-user/strace.c	2019-12-15 00:18:22.178280369 +0200
+diff -uNr qemu-2.9.1/linux-user/strace.c qemu-2.9.1.mod/linux-user/strace.c
+--- qemu-2.9.1/linux-user/strace.c  2017-09-07 21:58:14.000000000 +0530
++++ qemu-2.9.1.mod/linux-user/strace.c  2024-07-14 12:27:55.694328722 +0530
 @@ -1,7 +1,7 @@
  #include "qemu/osdep.h"
  #include <sys/ipc.h>

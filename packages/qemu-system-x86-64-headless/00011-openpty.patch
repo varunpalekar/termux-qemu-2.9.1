@@ -1,0 +1,35 @@
+diff -uNr qemu-2.9.1/contrib/ivshmem-server/ivshmem-server.c qemu-2.9.1.mod/contrib/ivshmem-server/ivshmem-server.c
+--- qemu-2.9.1/contrib/ivshmem-server/ivshmem-server.c  2017-09-07 21:58:14.000000000 +0530
++++ qemu-2.9.1.mod/contrib/ivshmem-server/ivshmem-server.c  2024-07-15 01:04:08.311526987 +0530
+@@ -28,6 +28,8 @@
+ /** default listen backlog (number of sockets not accepted) */
+ #define IVSHMEM_SERVER_LISTEN_BACKLOG 10
+
++int shm_open(const char *name, int oflag, mode_t mode);
++
+ /* send message to a client unix socket */
+ static int
+ ivshmem_server_send_one_msg(int sock_fd, int64_t peer_id, int fd)
+diff -uNr qemu-2.9.1/fsdev/9p-marshal.h qemu-2.9.1.mod/fsdev/9p-marshal.h
+--- qemu-2.9.1/fsdev/9p-marshal.h 2017-09-07 21:58:14.000000000 +0530
++++ qemu-2.9.1.mod/fsdev/9p-marshal.h 2024-07-15 01:32:30.450568514 +0530
+@@ -1,3 +1,4 @@
++#include<sys/types.h>
+ #ifndef QEMU_9P_MARSHAL_H
+ #define QEMU_9P_MARSHAL_H
+
+
+diff -uNr qemu-2.9.1/util/qemu-openpty.c qemu-2.9.1.mod/util/qemu-openpty.c
+--- qemu-2.9.1/util/qemu-openpty.c  2017-09-07 21:58:14.000000000 +0530
++++ qemu-2.9.1.mod/util/qemu-openpty.c  2024-07-15 00:40:25.612739717 +0530
+@@ -106,6 +106,10 @@
+         termios_p->c_cc[VMIN] = 0;
+         termios_p->c_cc[VTIME] = 0;
+ }
++#else
++    static int openpty(int *amaster, int *aslave, char *name,
++                   struct termios *termp, struct winsize *winp);
++    static void cfmakeraw (struct termios *termios_p);
+ #endif
+
+ int qemu_openpty_raw(int *aslave, char *pty_name)

@@ -1,12 +1,12 @@
-diff -uNr qemu-4.2.0/audio/ossaudio.c qemu-4.2.0.mod/audio/ossaudio.c
---- qemu-4.2.0/audio/ossaudio.c	2019-12-12 20:20:47.000000000 +0200
-+++ qemu-4.2.0.mod/audio/ossaudio.c	2019-12-15 00:04:31.280813450 +0200
-@@ -24,7 +24,7 @@
- 
+diff -uNr qemu-2.9.1/audio/ossaudio.c qemu-2.9.1.mod/audio/ossaudio.c
+--- qemu-2.9.1/audio/ossaudio.c 2017-09-07 21:58:14.000000000 +0530
++++ qemu-2.9.1.mod/audio/ossaudio.c 2024-07-14 12:03:08.079183603 +0530
+@@ -23,7 +23,7 @@
+  */
  #include "qemu/osdep.h"
  #include <sys/ioctl.h>
 -#include <sys/soundcard.h>
 +#include <linux/soundcard.h>
+ #include "qemu-common.h"
  #include "qemu/main-loop.h"
- #include "qemu/module.h"
  #include "qemu/host-utils.h"
